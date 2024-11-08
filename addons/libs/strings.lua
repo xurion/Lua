@@ -84,7 +84,7 @@ do
                 end
 
                 local length = fn(str:byte(index, index))
-                if length == false then
+                if length == nil then
                     _raw.error('Invalid code point')
                 end
 
@@ -544,11 +544,9 @@ do
             if first.type == types.boundary and first.value == '^' then
                 matches = pack(1, iterate, pattern, 1)
             else
-                local from = 1
-                for c in iterate(1) do
-                    matches = pack(from, iterate, pattern)
-                    from = from + #c
-                    if matches or from > length then
+                for i = 1, length do
+                    matches = pack(i, iterate, pattern)
+                    if matches then
                         break
                     end
                 end
@@ -578,7 +576,7 @@ do
                 return findplain(str, pattern, encoding, from, to)
             else
                 local offset = from - 1
-                local matches = findpattern(function(pos) return str:it(encoding, pos + offset + 1, to) end, to - offset, pattern_cache[encoding][pattern])
+                local matches = findpattern(function(pos) return str:it(encoding, pos + offset, to) end, to - offset, pattern_cache[encoding][pattern])
                 if not matches then
                     return nil
                 end
