@@ -73,7 +73,7 @@ local chatmon_plugin_xml = loadstring(converted)()
 local defaults = L{
     { name='tell' },
     { name='emote' },
-    { name='invite', sound='invitation' },
+    { name='invite', sound='invite' },
     { name='examine' },
     { name='talk', from=L{'say', 'shout', 'party', 'linkshell', 'linkshell2'}, match='<name>' },
 }
@@ -83,7 +83,7 @@ local triggers = L{}
 for data in defaults:it() do
     local name = data.name:ucfirst()
     local comment = chatmon_plugin_xml.settings[name .. 'Sound']:lower() == 'none'
-    triggers:append((comment and '-- ' or '') .. format_trigger(data.from, data.not_from, data.match, data.not_match, sounds[data.name]))
+    triggers:append((comment and '-- ' or '') .. format_trigger(data.from, data.not_from, data.match, data.not_match, sounds[data.sound or data.name]))
 end
 
 local function parse_from(from)
