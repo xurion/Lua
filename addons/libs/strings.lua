@@ -599,6 +599,8 @@ do
                 else
                     encoding, from, to, plain = string.encoding.ascii, encoding, from, to
                 end
+            else if type(from) == 'boolean' then
+                from, to, plain = to, plain, from
             end
 
             if encoding == string.encoding.ascii and to == nil then
