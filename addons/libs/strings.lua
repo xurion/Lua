@@ -578,7 +578,7 @@ do
                 return findplain(str, pattern, encoding, from, to)
             else
                 local offset = from - 1
-                local matches = findpattern(function(pos) return str:it(encoding, pos + offset + 1, to) end, to - offset, pattern_cache[encoding][pattern])
+                local matches = findpattern(function(pos) return str:it(encoding, pos + offset, to) end, to - offset, pattern_cache[encoding][pattern])
                 if not matches then
                     return nil
                 end
