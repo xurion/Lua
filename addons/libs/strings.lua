@@ -15,6 +15,7 @@ local string = require('string')
 _libs.strings = string
 
 _raw = _raw or {}
+_raw.string = setmetatable(_raw.string or {}, {__index = table})
 _raw.error = _raw.error or error
 
 _meta = _meta or {}
@@ -192,7 +193,7 @@ do
     }
 
     do
-        local rawfind = string.find
+        _raw.string.find = string.find
 
         local findplain = function(str, pattern, encoding, from, to)
             local offset = #pattern - 1
@@ -604,7 +605,7 @@ do
             end
 
             if encoding == string.encoding.ascii and to == nil then
-                return rawfind(str, pattern, from, plain)
+                return _raw.string.find(str, pattern, from, plain)
             end
 
             return find(plain, str, pattern, encoding, adjust_from(str, from), adjust_to(str, to))
@@ -612,7 +613,7 @@ do
     end
 
     do
-        local rawmatch = string.match
+        _raw.string.match = string.match
 
         local process = function(str, first, last, ...)
             if not first then
@@ -632,7 +633,7 @@ do
             end
 
             if encoding == string.encoding.ascii and to == nil then
-                return rawmatch(str, pattern, from)
+                return _raw.string.match(str, pattern, from)
             end
 
             return process(str, string.find(str, pattern, adjust_from(str, from), false, encoding, adjust_to(str, to)))
@@ -640,7 +641,7 @@ do
     end
 
     do
-        local rawgmatch = string.gmatch
+        _raw.string.gmatch = string.gmatch
 
         function string.gmatch(str, pattern, encoding, from, to)
             if type(encoding) ~= 'table' then
@@ -648,7 +649,7 @@ do
             end
 
             if encoding == string.encoding.ascii and to == nil then
-                return rawgmatch(str, pattern)
+                return _raw.string.gmatch(str, pattern)
             end
 
             to = adjust_to(str, to)
@@ -680,7 +681,7 @@ do
     end
 
     do
-        local rawgsub = string.gsub
+        _raw.string.gsub = string.gsub
 
         function string.gsub(str, pattern, repl, encoding, n, from, to)
             if type(encoding) ~= 'table' then
@@ -688,7 +689,7 @@ do
             end
 
             if encoding == string.encoding.ascii and to == nil then
-                return rawgsub(str, pattern, repl)
+                return _raw.string.gsub(str, pattern, repl)
             end
 
             to = adjust_to(str, to)
@@ -720,7 +721,7 @@ do
     end
 
     do
-        local rawsplit = function(str, sep, encoding, maxsplit, include, raw, from, to)
+        local split = function(str, sep, encoding, maxsplit, include, raw, from, to)
             if not sep or sep == '' then
                 local res = {}
                 local count = 0
@@ -776,7 +777,7 @@ do
                 encoding, maxsplit, include, raw, from, to = string.encoding.ascii, encoding, maxsplit, include, raw, from
             end
 
-            local res, key = rawsplit(str, sep, encoding, maxsplit, include, raw, from or 1, to or #str)
+            local res, key = split(str, sep, encoding, maxsplit, include, raw, from or 1, to or #str)
 
             if _meta.L then
                 res.n = key
