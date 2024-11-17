@@ -663,6 +663,13 @@
     <support>https://github.com/sebyg666/Lua/tree/4.1-dev/addons/SubTarget</support>
   </addon>
   <addon>
+    <name>switch_focus</name>
+    <author>nifim</author>
+    <description>switch focus to another character running the addon on the same computer.</description>
+    <bugtracker>https://github.com/Windower/Lua/issues</bugtracker>
+    <support>https://discord.gg/aUrHCvk</support>
+  <addon>
+  <addon>
     <name>TargetInfo</name>
     <author>Arcon</author>
     <description>Displays information about your current target in memory.</description>
