@@ -158,6 +158,13 @@
     <support>http://www.ffxiah.com/player/Ragnarok/Ikonic</support>
   </addon>
   <addon>
+    <name>ChatMon</name>
+    <author>nifim</author>
+    <description>Port of chatmon plugin, create audible alert in response to chat events.</description>
+    <bugtracker>https://github.com/Windower/Lua/issues</bugtracker>
+    <support>https://discord.gg/aUrHCvk</support>
+  </addon>
+  <addon>
     <name>Clock</name>
     <author>Arcon</author>
     <description>Displays an on-screen clock in a custom format with options to display several different time zones.</description>
