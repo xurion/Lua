@@ -53,7 +53,7 @@ local entities = {
     amp = '&',
     lt = '<',
     gt = '>',
-    apos = '\'',
+    apos = '\\\'',
     quot = '"',
 }
 
