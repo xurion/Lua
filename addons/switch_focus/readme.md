@@ -1,7 +1,3 @@
-**Author:**  Nifim<br>
-**Version:**  1.0.0<br>
-**Date:** Nov. 17, 2024<br>
-
 # Switch Focus #
 
 * switch focus to another character running the addon.

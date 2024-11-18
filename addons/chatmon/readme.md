@@ -1,7 +1,3 @@
-**Author:**  Windower Dev Team<br>
-**Version:**  1.0.4<br>
-**Date:** Nov. 16, 2024<br>
-
 # Chatmon #
 
 * Port of chatmon plugin, create audible alert in response to chat events.
