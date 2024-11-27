@@ -879,4 +879,11 @@
     <bugtracker>https://github.com/Windower/Lua/issues</bugtracker>
     <support>https://github.com/eLiidyr</support>
   </addon>
+  <addon>
+    <name>Tickle</name>
+    <author>ragns</author>
+    <description>Displays the time remaining until your next resting tick.</description>
+    <bugtracker>https://github.com/Windower/Lua/issues</bugtracker>
+    <support>https://discord.gg/aUrHCvk</support>
+  </addon>
 </addons>
