@@ -675,7 +675,7 @@
     <description>switch focus to another character running the addon on the same computer.</description>
     <bugtracker>https://github.com/Windower/Lua/issues</bugtracker>
     <support>https://discord.gg/aUrHCvk</support>
-  <addon>
+  </addon>
   <addon>
     <name>TargetInfo</name>
     <author>Arcon</author>
