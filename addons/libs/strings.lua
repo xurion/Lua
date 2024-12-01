@@ -276,6 +276,10 @@ do
                 elseif c == '[' then
                     local set = {}
                     local next = iterator()
+                    local negate = next == '^'
+                    if negate then
+                        next = iterator()
+                    end
                     while next ~= ']' do
                         local add = next == '%' and iterator() or next
                         if add == nil then
@@ -287,7 +291,9 @@ do
 
                     pattern[count] = {
                         type = types.match,
-                        value = function(b) return set[b] end,
+                        value = negate
+                            and function(b) return not set[b] end
+                            or function(b) return set[b] end,
                     }
                 elseif c == '^' then
                     if count > 1 then
