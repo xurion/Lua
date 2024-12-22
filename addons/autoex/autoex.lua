@@ -504,7 +504,7 @@ events.logic['time'] = function(...)
                 local time = {h=tonumber(temp[1]), m=tonumber(temp[2])}
                 local h = {new=tonumber(math.floor(new/60)), old=tonumber(math.floor(old/60))}
                 local m = {new=tonumber(math.round(((new/60)-h.new)*60)), old=tonumber(math.round(((old/60)-h.old)*60))}
-                local command = o.command:gsub('{NEW_HOUR}', h.new):gsub('{NEW_MINUTE}', m.new):gsub('{OLD_HOUR}', h.old):gsub('{OLD_MINUTE}', m.old)
+                local c = o.command:gsub('{NEW_HOUR}', h.new):gsub('{NEW_MINUTE}', m.new):gsub('{OLD_HOUR}', h.old):gsub('{OLD_MINUTE}', m.old)
 
                 if windower.wc_match(h.new, time.h) and windower.wc_match(m.new, time.m) then
                     windower.send_command(c)
