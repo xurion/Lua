@@ -31,9 +31,6 @@ parse = {
 
 parse.i[0x00A] = function (data)
     windower.debug('zone change')
-    
-    -- print('gearswap_disabled during lastincoming',gearswap_disabled)
-    
     command_registry = Command_Registry.new()
     table.clear(not_sent_out_equip)
 
@@ -776,7 +773,6 @@ function initialize_packet_parsing()
     end
     
     table.sort(lastpackets, function(t1, t2) return t1.ts < t2.ts end)
-
     for _,p in ipairs(lastpackets) do
         parse.i[p.id](p.data)
     end
